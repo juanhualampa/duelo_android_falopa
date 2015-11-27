@@ -1,4 +1,4 @@
-package grupo6uis.dueloentreleyendasfinal.dueloApp;
+package grupo6uis.dueloentreleyendasfinal.duelo.domain;
 
 /**
  * Created by Juan on 27-Nov-15.

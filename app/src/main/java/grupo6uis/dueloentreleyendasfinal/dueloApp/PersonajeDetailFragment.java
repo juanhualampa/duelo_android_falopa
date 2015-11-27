@@ -1,7 +1,5 @@
 package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import grupo6uis.dueloentreleyendasfinal.R;
+import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 
 /**
  * A simple {@link Fragment} subclass.

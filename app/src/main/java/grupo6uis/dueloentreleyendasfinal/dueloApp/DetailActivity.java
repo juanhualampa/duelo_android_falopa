@@ -15,7 +15,7 @@ public class DetailActivity extends Activity {
         setContentView(R.layout.activity_detail);
         PersonajeDetailFragment workoutDetailFragment = (PersonajeDetailFragment)
                 getFragmentManager().findFragmentById(R.id.detail_frag);
-        int workoutId = (int) getIntent().getExtras().get(EXTRA_PERSONAJE_ID);
+        int personajeId = (int) getIntent().getExtras().get(EXTRA_PERSONAJE_ID);
         workoutDetailFragment.setPersonaje(personajeId);
     }
 }

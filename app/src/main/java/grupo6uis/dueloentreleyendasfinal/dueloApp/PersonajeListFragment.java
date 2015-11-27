@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
+
 
 public class PersonajeListFragment extends ListFragment {
     static interface PersonajeListListener {
