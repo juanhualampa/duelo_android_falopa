@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DueloEntreLeyendasFinal</string>
     <string name="title_personaje_detail">Detalles del Personaje</string>
+    <string name="stats">ESTADISTICAS</string>
 </resources>
