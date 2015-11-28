@@ -17,9 +17,12 @@ import grupo6uis.dueloentreleyendasfinal.R;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link PersonajeDetailFragment}.
  */
-public class DetailActivity extends AppCompatActivity {
-    public static final String PERSONAJE_ID = "id";
 
+
+public class DetailActivity extends AppCompatActivity implements PersonajeDetailFragment.Callbacks{
+
+
+    public static final String PERSONAJE_ID = "id";
 
     /*
     Esto es codigo de HF: Cap 8- Lo de abajo es la transformacion
@@ -86,5 +89,10 @@ public class DetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(String id) {
+
     }
 }

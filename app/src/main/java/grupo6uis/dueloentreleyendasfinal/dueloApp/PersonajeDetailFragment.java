@@ -2,12 +2,18 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.List;
 import grupo6uis.dueloentreleyendasfinal.R;
 import grupo6uis.dueloentreleyendasfinal.duelo.domain.Caracteristicas;
@@ -23,7 +29,8 @@ import retrofit.client.Response;
  * in two-pane mode (on tablets) or a {@link DetailActivity}
  * on handsets.
  */
-public class PersonajeDetailFragment extends ListFragment {
+//public class PersonajeDetailFragment extends ListFragment {
+public class PersonajeDetailFragment extends Fragment {
 
     /**
      * The fragment argument representing the item ID that this fragment
@@ -37,6 +44,40 @@ public class PersonajeDetailFragment extends ListFragment {
      */
     public PersonajeDetailFragment() {
     }
+
+    /**
+     * The serialization (saved instance state) Bundle key representing the
+     * activated item position. Only used on tablets.
+     */
+    private static final String STATE_ACTIVATED_POSITION = "activated_position";
+
+    /**
+     * The fragment's current callback object, which is notified of list item
+     * clicks.
+     */
+    private Callbacks mCallbacks = sDummyCallbacks;
+
+    /**
+     * The current activated item position. Only used on tablets.
+     */
+    private int mActivatedPosition = ListView.INVALID_POSITION;
+
+    public interface Callbacks {
+        void onItemSelected(String id);
+    }
+
+    /**
+     * A dummy implementation of the {@link Callbacks} interface that does
+     * nothing. Used only when this fragment is not attached to an activity.
+     */
+    private static Callbacks sDummyCallbacks = new Callbacks() {
+        @Override
+        public void onItemSelected(String id) {
+        }
+    };
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,9 +113,10 @@ public class PersonajeDetailFragment extends ListFragment {
     }
 
     private void mostrarCaracteristicas(@IdRes int id,List<String> caracteristicas){
-        for (String caracteristica : caracteristicas){
-            mostrarCaracteristica(id,caracteristica);
-        }
+        ListView listView = (ListView) this.getView().findViewById(id);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, caracteristicas);
+        listView.setAdapter(adapter);
     }
 
     /*
