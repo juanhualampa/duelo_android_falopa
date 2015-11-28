@@ -19,6 +19,7 @@ public class PersonajeAdapter extends AbstractListAdapter<Personaje> {
     public PersonajeAdapter(Context context, List<Personaje> personajes) {
         super(context, personajes);
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Personaje personaje = (Personaje) getItem(position);

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import grupo6uis.dueloentreleyendasfinal.duelo.adapter.PersonajeAdapter;
@@ -80,8 +83,6 @@ public class PersonajeListFragment extends ListFragment {
         setListAdapter(new PersonajeAdapter(getActivity(), personajes));
     }
 
-
-
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
@@ -89,6 +90,10 @@ public class PersonajeListFragment extends ListFragment {
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
         Personaje personaje = (Personaje) listView.getAdapter().getItem(position);
+
+        //Toast.makeText(getContext(), personaje.toString(), Toast.LENGTH_LONG).show();
+
+
         mCallbacks.onItemSelected(String.valueOf(personaje.getId()));
     }
 

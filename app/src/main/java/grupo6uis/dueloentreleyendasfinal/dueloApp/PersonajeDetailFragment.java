@@ -2,7 +2,7 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
 import grupo6uis.dueloentreleyendasfinal.R;
-import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
+import grupo6uis.dueloentreleyendasfinal.duelo.domain.Caracteristicas;
 import grupo6uis.dueloentreleyendasfinal.duelo.service.DueloService;
 import grupo6uis.dueloentreleyendasfinal.duelo.service.DueloServiceInstance;
 import retrofit.Callback;
@@ -23,7 +23,7 @@ import retrofit.client.Response;
  * in two-pane mode (on tablets) or a {@link DetailActivity}
  * on handsets.
  */
-public class PersonajeDetailFragment extends Fragment {
+public class PersonajeDetailFragment extends ListFragment {
 
     /**
      * The fragment argument representing the item ID that this fragment
@@ -50,10 +50,10 @@ public class PersonajeDetailFragment extends Fragment {
 
     private void obtenerCaracteristicasPersonaje(String personajeID) {
         DueloService dueloService = DueloServiceInstance.createDueloService();
-        dueloService.getCaracteristicasPersonaje(personajeID, new Callback<Personaje>() {
+        dueloService.getCaracteristicasPersonaje(personajeID, new Callback<Caracteristicas>() {
             @Override
-            public void success(Personaje personaje, Response response) {
-                mostrarPersonaje(personaje);
+            public void success(Caracteristicas caracteristicasPersonaje, Response response) {
+                mostrarCaracteristicasPersonaje(caracteristicasPersonaje);
             }
 
             @Override
@@ -64,10 +64,11 @@ public class PersonajeDetailFragment extends Fragment {
         });
     }
 
-    private void mostrarPersonaje( Personaje personaje) {
-        mostrarCaracteristicas(R.id.especialidades_detail,personaje.getEspecialidades());
-        mostrarCaracteristicas(R.id.debilidades_detail,personaje.getDebilidades());
-        mostrarCaracteristica(R.id.ubicacion_detail,personaje.getUbicacionIdeal());
+    private void mostrarCaracteristicasPersonaje( Caracteristicas caracteristicas) {
+
+        mostrarCaracteristicas(R.id.especialidades_detail,caracteristicas.getEspecialidades());
+        mostrarCaracteristicas(R.id.debilidades_detail,caracteristicas.getDebilidades());
+        mostrarCaracteristica(R.id.ubicacion_detail,caracteristicas.getUbicacionIdeal());
     }
 
     private void mostrarCaracteristicas(@IdRes int id,List<String> caracteristicas){
