@@ -32,7 +32,7 @@ public class PersonajeDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String PERSONAJE_ID = "item_id";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -45,8 +45,8 @@ public class PersonajeDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
-            String itemID = getArguments().getString(ARG_ITEM_ID);
+        if (getArguments().containsKey(PERSONAJE_ID)) {
+            String itemID = getArguments().getString(PERSONAJE_ID);
             obtenerCaracteristicasPersonaje(itemID);
         }
     }

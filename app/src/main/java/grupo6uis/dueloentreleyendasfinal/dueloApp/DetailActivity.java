@@ -3,7 +3,7 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import grupo6uis.dueloentreleyendasfinal.R;
 
@@ -16,8 +16,9 @@ import grupo6uis.dueloentreleyendasfinal.R;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link PersonajeDetailFragment}.
  */
-public class DetailActivity extends AppCompatActivity {
-    public static final String EXTRA_PERSONAJE_ID = "id";
+public class DetailActivity extends FragmentActivity  {
+    public static final String PERSONAJE_ID = "id";
+
 
     /*
     Esto es codigo de HF: Cap 8- Lo de abajo es la transformacion
@@ -55,8 +56,8 @@ public class DetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonajeDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(PersonajeDetailFragment.ARG_ITEM_ID));
+            arguments.putString(PersonajeDetailFragment.PERSONAJE_ID,
+                    getIntent().getStringExtra(PERSONAJE_ID));
             PersonajeDetailFragment fragment = new PersonajeDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
@@ -66,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     /*
-    Deberia agregarse la navegacion a la otra ventana desde un boton en la toolbar
+    Deberia agregarse la navegacion a la otra ventana , la de las estadisticas, desde un boton en la toolbar
      o poner un boton por ahi y accionar con un click (esto ultimo es más chancho)
      */
     @Override

@@ -2,10 +2,8 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.support.v4.app.FragmentActivity;
 import grupo6uis.dueloentreleyendasfinal.R;
-import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 
 
 public class ListActivity extends FragmentActivity implements PersonajeListFragment.Callbacks {
@@ -54,7 +52,7 @@ public class ListActivity extends FragmentActivity implements PersonajeListFragm
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonajeDetailFragment.ARG_ITEM_ID, id);
+            arguments.putString(PersonajeDetailFragment.PERSONAJE_ID, id);
             PersonajeDetailFragment fragment = new PersonajeDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
@@ -65,7 +63,7 @@ public class ListActivity extends FragmentActivity implements PersonajeListFragm
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, DetailActivity.class);
-            detailIntent.putExtra(DetailActivity.EXTRA_PERSONAJE_ID, id);
+            detailIntent.putExtra(DetailActivity.PERSONAJE_ID, id);
             startActivity(detailIntent);
         }
     }
