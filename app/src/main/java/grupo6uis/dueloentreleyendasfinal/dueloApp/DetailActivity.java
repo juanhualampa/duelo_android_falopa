@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import grupo6uis.dueloentreleyendasfinal.R;
 
@@ -24,6 +26,7 @@ public class DetailActivity extends AppCompatActivity implements PersonajeDetail
 
     public static final String PERSONAJE_ID = "id";
 
+    private Toolbar toolbar;
     /*
     Esto es codigo de HF: Cap 8- Lo de abajo es la transformacion
     a codigo del ejemplo de Libros
@@ -44,6 +47,9 @@ public class DetailActivity extends AppCompatActivity implements PersonajeDetail
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        //TODO STACK OVERFLOW EXAMPLE
+        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(toolbar);
         // Show the Up button in the action bar.
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -94,5 +100,12 @@ public class DetailActivity extends AppCompatActivity implements PersonajeDetail
     @Override
     public void onItemSelected(String id) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }
