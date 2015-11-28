@@ -55,7 +55,7 @@ public class ListActivity extends FragmentActivity implements PersonajeListFragm
             arguments.putString(PersonajeDetailFragment.PERSONAJE_ID, id);
             PersonajeDetailFragment fragment = new PersonajeDetailFragment();
             fragment.setArguments(arguments);
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .replace(R.id.personaje_detail_container, fragment)
                     .commit();
 

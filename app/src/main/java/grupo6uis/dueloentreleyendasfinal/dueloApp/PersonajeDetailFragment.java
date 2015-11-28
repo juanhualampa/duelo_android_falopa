@@ -1,17 +1,14 @@
 package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
-
 import grupo6uis.dueloentreleyendasfinal.R;
 import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 import grupo6uis.dueloentreleyendasfinal.duelo.service.DueloService;
