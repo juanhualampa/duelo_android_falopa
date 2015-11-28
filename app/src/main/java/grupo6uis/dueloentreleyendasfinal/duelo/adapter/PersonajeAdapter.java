@@ -16,8 +16,8 @@ import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 
 public class PersonajeAdapter extends AbstractListAdapter<Personaje> {
 
-    public PersonajeAdapter(Context context, List<Personaje> libros) {
-        super(context, libros);
+    public PersonajeAdapter(Context context, List<Personaje> personajes) {
+        super(context, personajes);
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

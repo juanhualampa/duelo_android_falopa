@@ -73,9 +73,9 @@ public class PersonajeDetailFragment extends Fragment {
         mostrarCaracteristica(R.id.ubicacion_detail,personaje.getUbicacionIdeal());
     }
 
-    private void mostrarCaracteristicas(@IdRes int id,List<String> caracteristica){
-        for (String esp : caracteristica){
-            mostrarCaracteristica(id,esp);
+    private void mostrarCaracteristicas(@IdRes int id,List<String> caracteristicas){
+        for (String caracteristica : caracteristicas){
+            mostrarCaracteristica(id,caracteristica);
         }
     }
 

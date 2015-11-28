@@ -3,7 +3,7 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import grupo6uis.dueloentreleyendasfinal.R;
 
@@ -16,7 +16,7 @@ import grupo6uis.dueloentreleyendasfinal.R;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link PersonajeDetailFragment}.
  */
-public class DetailActivity extends FragmentActivity  {
+public class DetailActivity extends AppCompatActivity {
     public static final String PERSONAJE_ID = "id";
 
 
@@ -41,7 +41,7 @@ public class DetailActivity extends FragmentActivity  {
         setContentView(R.layout.activity_detail);
 
         // Show the Up button in the action bar.
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
