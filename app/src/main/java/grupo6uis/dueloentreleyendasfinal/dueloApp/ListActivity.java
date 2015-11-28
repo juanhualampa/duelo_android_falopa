@@ -1,21 +1,46 @@
 package grupo6uis.dueloentreleyendasfinal.dueloApp;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+import android.support.v4.app.FragmentActivity;
 import grupo6uis.dueloentreleyendasfinal.R;
-import grupo6uis.dueloentreleyendasfinal.dueloApp.DetailActivity;
+import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 
 
-public class ListActivity extends Activity implements PersonajeListFragment.Callbacks {
+public class ListActivity extends FragmentActivity implements PersonajeListFragment.Callbacks {
+
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+    }*/
+
+    /**
+     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
+     * device.
+     */
+    private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        if (findViewById(R.id.personaje_detail_container) != null) {
+            // The detail container view will be present only in the
+            // large-screen layouts (res/values-large and
+            // res/values-sw600dp). If this view is present, then the
+            // activity should be in two-pane mode.
+            mTwoPane = true;
+
+            // In two-pane mode, list items should be given the
+            // 'activated' state when touched.
+            ((PersonajeListFragment) getFragmentManager()
+                    .findFragmentById(R.id.personaje_list))
+                    .setActivateOnItemClick(true);
+        }
+
     }
 
     /**
@@ -24,20 +49,28 @@ public class ListActivity extends Activity implements PersonajeListFragment.Call
      */
     @Override
     public void onItemSelected(String id) {
-        View fragmentContainer = findViewById(R.id.fragment_container);
-        if (fragmentContainer != null) {
-            PersonajeDetailFragment details = new PersonajeDetailFragment();
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            details.setPersonaje(Integer.valueOf(id));
-            ft.replace(R.id.fragment_container, details);
-            ft.addToBackStack(null);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            ft.commit();
+        if (mTwoPane) {
+            // In two-pane mode, show the detail view in this activity by
+            // adding or replacing the detail fragment using a
+            // fragment transaction.
+            Bundle arguments = new Bundle();
+            arguments.putString(PersonajeDetailFragment.ARG_ITEM_ID, id);
+            PersonajeDetailFragment fragment = new PersonajeDetailFragment();
+            fragment.setArguments(arguments);
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.personaje_detail_container, fragment)
+                    .commit();
+
         } else {
-            Intent intent = new Intent(this, DetailActivity.class);
-            intent.putExtra(DetailActivity.EXTRA_PERSONAJE_ID, Integer.valueOf(id));
-            startActivity(intent);
+            // In single-pane mode, simply start the detail activity
+            // for the selected item ID.
+            Intent detailIntent = new Intent(this, DetailActivity.class);
+            detailIntent.putExtra(DetailActivity.EXTRA_PERSONAJE_ID, id);
+            startActivity(detailIntent);
         }
     }
+
+
+
 
 }
