@@ -16,7 +16,7 @@ import retrofit.http.Path;
  */
 public interface DueloService {
 
-    @GET("/personajes")
+    @GET("/datos_minimos_personajes")
     void getPersonajes(Callback<List<Personaje>> callback);
 
     @GET("/descripcion_personaje/1/{PersonajeId}")
