@@ -23,6 +23,8 @@ import retrofit.client.Response;
 
 public class PersonajeListFragment extends ListFragment {
 
+
+
     /**
      * The serialization (saved instance state) Bundle key representing the
      * activated item position. Only used on tablets.
