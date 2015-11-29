@@ -1,9 +1,11 @@
 package grupo6uis.dueloentreleyendasfinal.duelo.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by Juan on 27-Nov-15.
  */
-public class Personaje {
+public class Personaje implements Serializable{
 
     private int id;
     private String nombre;

@@ -3,4 +3,7 @@
     <string name="title_personaje_detail">Detalles del Personaje</string>
     <string name="stats">ESTADISTICAS</string>
     <string name="buscar">Buscar</string>
+    <string name="especialidades">ESPECIALIDADES</string>
+    <string name="ubicacion">Mejor Posicion</string>
+    <string name="debilidades">Debilidades</string>
 </resources>

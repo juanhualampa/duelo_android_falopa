@@ -15,26 +15,55 @@
         android:layout_height="fill_parent"/>
     -->
 
-    <ListView
-        android:id="@+id/especialidades_detail"
-        style="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
+        <ImageView
+            android:id="@+id/imgPj"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" />
+        <TextView
+            android:id="@+id/especialidades_detail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/especialidades"
+            />
 
-    <ListView
-        android:id="@+id/debilidades_detail"
-        style="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
+        <ListView
+            android:id="@+id/especialidades_detail"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
 
-    <TextView
-        android:id="@+id/ubicacion_detail"
-        style="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/debilidades_detail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/debilidades"
+            />
+
+        <ListView
+            android:id="@+id/debilidades_detail"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/ubicacion_detail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ubicacion"
+            />
+
+        <TextView
+            android:id="@+id/ubicacion_detail"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+
+
 
 </LinearLayout>
 

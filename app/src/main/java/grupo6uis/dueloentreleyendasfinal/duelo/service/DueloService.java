@@ -20,7 +20,7 @@ public interface DueloService {
     void getPersonajes(Callback<List<Personaje>> callback);
 
     @GET("/descripcion_personaje/1/{PersonajeId}")
-    void getCaracteristicasPersonaje(@Path("PersonajeId") String id, Callback<Caracteristicas> callback);
+    void getCaracteristicasPersonaje(@Path("PersonajeId") int id, Callback<Caracteristicas> callback);
 
     @GET("/estadisticas/1/{PersonajeId}")
     void getEstadisticasPersonaje(@Path("PersonajeId") String id, Callback<Estadisticas> callback);
