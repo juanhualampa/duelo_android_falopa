@@ -36,7 +36,7 @@ public class PersonajeDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String PERSONAJE_ID = "item_id";
+    public static final String PERSONAJE_ID = "id";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
