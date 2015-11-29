@@ -26,7 +26,8 @@ public interface DueloService {
     void getEstadisticasPersonaje(@Path("PersonajeId") String id, Callback<Estadisticas> callback);
 
 
-
+    @GET("/personajesBuscados/{PersonajeId}")
+    void buscarPersonajes(@Path("PersonajeId")String id, Callback<List<Personaje>> callback);
 }
 
 

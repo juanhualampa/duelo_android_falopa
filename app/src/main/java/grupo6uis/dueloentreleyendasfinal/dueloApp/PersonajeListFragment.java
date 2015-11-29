@@ -4,14 +4,20 @@ package grupo6uis.dueloentreleyendasfinal.dueloApp;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import grupo6uis.dueloentreleyendasfinal.R;
 import grupo6uis.dueloentreleyendasfinal.duelo.adapter.PersonajeAdapter;
 import grupo6uis.dueloentreleyendasfinal.duelo.domain.Personaje;
 import grupo6uis.dueloentreleyendasfinal.duelo.service.DueloService;
@@ -21,7 +27,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class PersonajeListFragment extends ListFragment {
+public class PersonajeListFragment extends ListFragment implements View.OnClickListener {
 
 
 
@@ -41,6 +47,28 @@ public class PersonajeListFragment extends ListFragment {
      * The current activated item position. Only used on tablets.
      */
     private int mActivatedPosition = ListView.INVALID_POSITION;
+
+    @Override
+    public void onClick(View v) {
+        buscarPersonajes(v);
+    }
+    public void buscarPersonajes(View v){
+        EditText campoDeBusqueda = (EditText) v.findViewById(R.id.personajeBuscado);
+        String personaje = campoDeBusqueda.getText().toString();
+        DueloService dueloService = DueloServiceInstance.createDueloService();
+        dueloService.buscarPersonajes(personaje, new Callback<List<Personaje>>() {
+            @Override
+            public void success(List<Personaje> personajes, Response response) {
+                agregarPesonajes(personajes);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e("", error.getMessage());
+                error.printStackTrace();
+            }
+        });
+    }
 
     public interface Callbacks {
         void onItemSelected(String id);
@@ -64,6 +92,7 @@ public class PersonajeListFragment extends ListFragment {
     }
 
     public PersonajeListFragment(){}
+
 
     private void pedirPersonajes() {
         DueloService dueloService = DueloServiceInstance.createDueloService();
@@ -142,7 +171,7 @@ public class PersonajeListFragment extends ListFragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         // Restore the previously serialized activated item position.
@@ -150,6 +179,29 @@ public class PersonajeListFragment extends ListFragment {
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
+
+        final EditText campoDeBusqueda = (EditText) view.findViewById(R.id.personajeBuscado);
+        //agregarAcciones(view,campoDeBusqueda);
+    }
+
+    private void agregarAcciones(final View view,EditText campoDeBusqueda){
+            campoDeBusqueda.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                buscarPersonajes(view);
+            }
+        });
+
     }
 
     @Override
