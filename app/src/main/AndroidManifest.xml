@@ -25,5 +25,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".dueloApp.ListActivity" />
         </activity>
+        <activity
+            android:name=".dueloApp.EstadisticasActivity"
+            android:label="@string/title_personaje_detail"
+            android:parentActivityName=".dueloApp.DetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".dueloApp.ListActivity" />
+        </activity>
+
     </application>
 </manifest>
